@@ -93,14 +93,16 @@ export const LayerGroup = new Group({
   layers: [OSMHumanitarian, StamenTerrain, rasterLayer],
 });
 
+export const view = new View({
+  center: fromLonLat([38.896372, 33.6024]),
+  zoom: 4,
+  minZoom: 3,
+});
+
 export const map = new Map({
   target: 'map',
   layers: [LayerGroup, starbucksShopLayer],
-  view: new View({
-    center: fromLonLat([38.896372, 33.6024]),
-    zoom: 4,
-    minZoom: 3,
-  }),
+  view: view,
 });
 
 // * * * create map * * *
