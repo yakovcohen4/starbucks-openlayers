@@ -1,8 +1,8 @@
 import { map, starbucksShopLayer, shopsData, countryGeoData } from '../main';
 import countries from '../data/countryAlpha2.json';
 // helper function
-import { getLayerByClassName } from './getLayerByClassName';
-import { createLayerOfShopsByCountry } from './CreateLayerOfShopsByCountry';
+import { getLayerByClassName } from './helpers/getLayerByClassName';
+import { createLayerOfShopsByCountry } from './createLayerOfShopsByCountry';
 import { createLayerCountryPolygon } from './createLayerCountryPolygon';
 
 export const chooseCountry = (event: any) => {

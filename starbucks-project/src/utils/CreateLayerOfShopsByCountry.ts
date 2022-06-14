@@ -7,7 +7,7 @@ import { view } from '../main';
 // type
 import { shopType } from '../vite-env';
 // helper function
-import { getAllPointShopsByData } from './getAllPointShopsByData';
+import { getAllPointShopsByData } from './helpers/getAllPointShopsByData';
 
 export const createLayerOfShopsByCountry = (
   countryCodeAlpha2: string,

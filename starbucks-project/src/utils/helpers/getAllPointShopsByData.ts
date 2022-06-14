@@ -4,7 +4,7 @@ import Point from 'ol/geom/Point';
 import { fromLonLat } from 'ol/proj';
 import { Icon, Style } from 'ol/style';
 // types
-import { shopType } from '../vite-env';
+import { shopType } from '../../vite-env';
 
 // getAllPointShopsByData
 export const getAllPointShopsByData = (data: shopType[]) => {

@@ -11,7 +11,7 @@ import { fromLonLat } from 'ol/proj';
 import { shopType, countryGeoDataType } from './vite-env';
 // helper function
 import { fetchStarbucksShops } from './utils/fetchStarbucksShops';
-import { getAllPointShopsByData } from './utils/getAllPointShopsByData';
+import { getAllPointShopsByData } from './utils/helpers/getAllPointShopsByData';
 import { chooseCountry } from './utils/chooseCountry';
 import { fetchGeoJsonCountry } from './utils/fetchGeoJsonCountry';
 import { chooseLayer } from './utils/changeLayer';
