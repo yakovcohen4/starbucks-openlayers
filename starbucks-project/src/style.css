@@ -66,3 +66,43 @@ option {
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
+
+#shop-info {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px;
+  z-index: 5;
+  background-color: aliceblue;
+  box-shadow: rgba(0, 0, 0, 0.38) 0px 3px 8px;
+}
+
+#shop-info > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#shop-info > div > span {
+  text-transform: capitalize;
+}
+
+/* shopInfo!.style.backgroundColor = '#fff';
+shopInfo!.style.border = '1px solid #000';
+shopInfo!.style.padding = '10px';
+shopInfo!.style.zIndex = '1';
+shopInfo!.style.boxShadow = '0 0 10px #000';
+shopInfo!.style.borderRadius = '5px';
+shopInfo!.style.fontSize = '12px';
+shopInfo!.style.fontFamily = 'sans-serif';
+shopInfo!.style.color = '#000';
+shopInfo!.style.textAlign = 'center';
+shopInfo!.style.lineHeight = '1.5';
+shopInfo!.style.whiteSpace = 'pre-wrap';
+shopInfo!.style.wordWrap = 'break-word';
+shopInfo!.style.overflow = 'hidden';
+shopInfo!.style.maxWidth = '200px';
+shopInfo!.style.maxHeight = '200px'; */
