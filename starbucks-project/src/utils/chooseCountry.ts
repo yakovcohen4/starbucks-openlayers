@@ -29,7 +29,7 @@ export const chooseCountry = (event: any) => {
     )[0].name;
   }
 
-  // Clear map
+  // * * * Clear map * * *
   map.removeLayer(starbucksShopLayer);
   const allMapLayers = map.getLayers().getArray();
 
@@ -48,28 +48,7 @@ export const chooseCountry = (event: any) => {
   if (polygonShopCountryLayer) {
     map.removeLayer(polygonShopCountryLayer);
   }
-  // Clear map
-
-  // Add new layer of shops by country
-  let starbucksShops;
-  if (countryCodeAlpha2 === 'all-world') {
-    starbucksShops = shopsData;
-  } else {
-    starbucksShops = shopsData.filter(
-      shop => shop.country === countryCodeAlpha2
-    );
-  }
-
-  const countryShops: Feature<Point>[] = getAllPointShopsByData(starbucksShops);
-
-  const vectorSourceByCountry = new VectorSource({
-    features: countryShops,
-  });
-  const vectorLayerByCountry = new VectorLayer({
-    source: vectorSourceByCountry,
-    className: 'starbucks-by-country',
-  });
-  map.addLayer(vectorLayerByCountry);
+  // * * * Clear map * * *
 
   // Add Country Polygon layer
   const countryFeature = countryGeoData.features.filter(
@@ -116,4 +95,25 @@ export const chooseCountry = (event: any) => {
     className: 'country-polygon',
   });
   map.addLayer(polygonLayer);
+
+  // Add new layer of shops by country
+  let starbucksShops;
+  if (countryCodeAlpha2 === 'all-world') {
+    starbucksShops = shopsData;
+  } else {
+    starbucksShops = shopsData.filter(
+      shop => shop.country === countryCodeAlpha2
+    );
+  }
+
+  const countryShops: Feature<Point>[] = getAllPointShopsByData(starbucksShops);
+
+  const vectorSourceByCountry = new VectorSource({
+    features: countryShops,
+  });
+  const vectorLayerByCountry = new VectorLayer({
+    source: vectorSourceByCountry,
+    className: 'starbucks-by-country',
+  });
+  map.addLayer(vectorLayerByCountry);
 };
