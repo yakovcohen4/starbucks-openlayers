@@ -1,14 +1,13 @@
 import { Feature } from 'ol';
-import { Point, Polygon } from 'ol/geom';
+import { Polygon } from 'ol/geom';
 import { Fill, Stroke, Style } from 'ol/style';
 import { fromLonLat } from 'ol/proj';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
-import BaseLayer from 'ol/layer/Base';
 import { map, starbucksShopLayer, shopsData, countryGeoData } from '../main';
-import { getAllPointShopsByData } from './getAllPointShopsByData';
 import countries from '../data/countryAlpha2.json';
 import { getLayerByClassName } from './getLayerByClassName';
+import { createLayerOfShopsByCountry } from './CreateLayerOfShopsByCountry';
 
 const styleCountryPolygon = new Style({
   stroke: new Stroke({
@@ -52,13 +51,11 @@ export const chooseCountry = (event: any) => {
 
   // Add Country Polygon layer
   const countryFeature = countryGeoData.features.filter(
-    (country2: { properties: { name: string } }) =>
-      country2.properties.name === countryName
+    (country: { properties: { name: string } }) =>
+      country.properties.name === countryName
   )[0];
 
-  if (!countryFeature) {
-    return;
-  }
+  if (!countryFeature) return;
 
   const countryCoordinatesArrayLength =
     countryFeature.geometry.coordinates.length;
@@ -97,23 +94,9 @@ export const chooseCountry = (event: any) => {
   map.addLayer(polygonLayer);
 
   // Add new layer of shops by country
-  let starbucksShops;
-  if (countryCodeAlpha2 === 'all-world') {
-    starbucksShops = shopsData;
-  } else {
-    starbucksShops = shopsData.filter(
-      shop => shop.country === countryCodeAlpha2
-    );
-  }
-
-  const countryShops: Feature<Point>[] = getAllPointShopsByData(starbucksShops);
-
-  const vectorSourceByCountry = new VectorSource({
-    features: countryShops,
-  });
-  const vectorLayerByCountry = new VectorLayer({
-    source: vectorSourceByCountry,
-    className: 'starbucks-by-country',
-  });
+  const vectorLayerByCountry = createLayerOfShopsByCountry(
+    countryCodeAlpha2,
+    shopsData
+  );
   map.addLayer(vectorLayerByCountry);
 };
