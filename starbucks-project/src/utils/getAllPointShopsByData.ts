@@ -23,6 +23,14 @@ export const getAllPointShopsByData = (data: shopType[]) => {
         }),
       })
     );
+    pointShop.setProperties({
+      id_: shop.store_id,
+      name: shop.name,
+      city: shop.city,
+      longitude: shop.longitude,
+      latitude: shop.latitude,
+    });
+
     allPointShops.push(pointShop);
   });
 
