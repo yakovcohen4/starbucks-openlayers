@@ -55,11 +55,9 @@ baseLayerElements.forEach(baseLayerElement => {
 });
 
 // * * * create map * * *
-
 const starbucksShopSource = new VectorSource({
   features: starbucksAllPointShops,
 });
-
 export const starbucksShopLayer = new VectorLayer({
   source: starbucksShopSource,
 });
