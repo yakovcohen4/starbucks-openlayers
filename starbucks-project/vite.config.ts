@@ -1,7 +1,8 @@
-// vite.config.js
-export default {
+import { defineConfig } from 'vite';
+
+export default defineConfig({
   base: '/starbucks-openlayers/',
   build: {
     target: 'esnext',
   },
-};
+});
