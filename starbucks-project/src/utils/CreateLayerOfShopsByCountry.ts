@@ -22,15 +22,8 @@ export const createLayerOfShopsByCountry = (
     );
   }
 
-  // View the map to the country
-  view.animate({
-    center: fromLonLat([
-      starbucksShops[0].longitude,
-      starbucksShops[0].latitude,
-    ]),
-    duration: 2000,
-    zoom: 6,
-  });
+  // move map view to the country
+  moveMapByCoordinate(starbucksShops[0].longitude, starbucksShops[0].latitude);
 
   const countryShops: Feature<Point>[] = getAllPointShopsByData(starbucksShops);
 
