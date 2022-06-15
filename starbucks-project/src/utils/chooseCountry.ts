@@ -1,7 +1,7 @@
-import { map, starbucksShopLayer, shopsData, countryGeoData } from '../main';
+import { map, shopsData, countryGeoData } from '../main';
 import countries from '../data/countryAlpha2.json';
 // helper function
-import { getLayerByClassName } from './helpers/getLayerByClassName';
+import { clearMapForChooseCountry } from './helpers/clearMapForChooseCountry';
 import { createLayerOfShopsByCountry } from './createLayerOfShopsByCountry';
 import { createLayerCountryPolygon } from './createLayerCountryPolygon';
 
@@ -15,24 +15,7 @@ export const chooseCountry = (event: any) => {
   }
 
   // * * * Clear map * * *
-  map.removeLayer(starbucksShopLayer);
-  const allMapLayers = map.getLayers().getArray();
-
-  const starbucksShopCountryLayer = getLayerByClassName(
-    allMapLayers,
-    'starbucks-by-country'
-  );
-  const polygonShopCountryLayer = getLayerByClassName(
-    allMapLayers,
-    'country-polygon'
-  );
-
-  if (starbucksShopCountryLayer) {
-    map.removeLayer(starbucksShopCountryLayer);
-  }
-  if (polygonShopCountryLayer) {
-    map.removeLayer(polygonShopCountryLayer);
-  }
+  clearMapForChooseCountry();
   // * * * Clear map * * *
 
   // Add new layer Country Polygon
