@@ -17,6 +17,8 @@ import { fetchGeoJsonCountry } from './utils/fetchGeoJsonCountry';
 import { chooseLayer } from './utils/changeLayer';
 // helper Data
 import countries from './data/countryAlpha2.json';
+import mapLayers from './data/mapLayers.json';
+import { createPopUpShop } from './utils/createPopUpShop';
 
 // fetch data
 export const shopsData: shopType[] = await fetchStarbucksShops();
@@ -69,9 +71,8 @@ const rasterLayer = new TileLayer({
 
 const OSMHumanitarian = new TileLayer({
   source: new OSM({
-    url: 'https://{a-c}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
-    attributions:
-      '&copy; Openstreetmap contributors, <a href="http://www.openstreetmap.org/copyright">ODbL</a>',
+    url: mapLayers.OSMHumanitarian.url,
+    attributions: mapLayers.OSMHumanitarian.attributions,
     crossOrigin: 'anonymous',
   }),
   className: 'OSMHumanitarian',
@@ -79,9 +80,8 @@ const OSMHumanitarian = new TileLayer({
 
 const StamenTerrain = new TileLayer({
   source: new OSM({
-    url: 'https://stamen-tiles-{a-c}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}.jpg',
-    attributions:
-      'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    url: mapLayers.StamenTerrain.url,
+    attributions: mapLayers.StamenTerrain.attributions,
     crossOrigin: 'anonymous',
   }),
   className: 'StamenTerrain',
