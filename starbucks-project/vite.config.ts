@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/starbucks-openlayers/',
+  base: './',
   build: {
     target: 'esnext',
   },

@@ -5,6 +5,7 @@ import { fromLonLat } from 'ol/proj';
 import { Icon, Style } from 'ol/style';
 // types
 import { shopType } from '../../vite-env';
+import logo from '../../data/starbucks-logo.png';
 
 // getAllPointShopsByData
 export const getAllPointShopsByData = (data: shopType[]) => {
@@ -17,7 +18,7 @@ export const getAllPointShopsByData = (data: shopType[]) => {
     pointShop.setStyle(
       new Style({
         image: new Icon({
-          src: '../../src/data/starbucks-logo.png',
+          src: logo,
           scale: 0.1,
           opacity: 0.75,
         }),
