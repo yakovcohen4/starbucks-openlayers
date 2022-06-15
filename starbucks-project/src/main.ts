@@ -106,43 +106,5 @@ export const map = new Map({
 // * * * create map * * *
 
 //  * * * Add Popup Shop * * *
-const shopInfo = document.getElementById('shop-info');
-
-map.on('pointermove', function (evt) {
-  if (evt.dragging) {
-    return;
-  }
-
-  const pixel = map.getEventPixel(evt.originalEvent);
-  const hit = map.hasFeatureAtPixel(pixel);
-  map.getTargetElement().style.cursor = hit ? 'pointer' : '';
-
-  if (hit) {
-    const feature = map.forEachFeatureAtPixel(pixel, function (feature: any) {
-      return feature;
-    });
-
-    if (feature) {
-      const shop = shopsData.filter(
-        shop => shop.store_id === feature.values_.id_
-      )[0];
-
-      if (shop) {
-        shopInfo!.innerHTML = `
-        <div>
-          <span>name: ${shop.name}</span>
-          <span>city: ${shop.city}</span>
-        </div>`;
-
-        shopInfo!.style.visibility = 'visible';
-        shopInfo!.style.top = `${evt.pixel[1] + 80}px`;
-        shopInfo!.style.left = `${evt.pixel[0] + 10}px`;
-      } else {
-        shopInfo!.style.visibility = 'hidden';
-      }
-    }
-  } else {
-    shopInfo!.style.visibility = 'hidden';
-  }
-});
+map.on('pointermove', createPopUpShop);
 //  * * * Add Popup Shop * * *
